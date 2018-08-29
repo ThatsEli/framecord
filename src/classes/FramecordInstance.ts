@@ -1,19 +1,23 @@
-import { Client } from "discord.js";
+import { Client, Message } from "discord.js";
+import { CommandListener } from '../listener/CommandListener';
+import { FramecordCommand } from './FramecordCommand';
 
 export class FramecordInstance {
 
-    private discordJS: Client;
+    private discordJS: Client = new Client();
+    private CommandListener = new CommandListener();
 
-    constructor() {
-        this.discordJS = new Client();
-    }
+    constructor() {}
 
     public start(token: string): void {
         this.discordJS.login(token);
+        this.discordJS.on('message', (message: Message): void => {
+            this.CommandListener.checkMessage(message);
+        })
     }
 
-    public addCommand(): void {
-
+    public addCommand(command: FramecordCommand): void {
+        this.CommandListener.addCommand(command);
     }
 
 }
