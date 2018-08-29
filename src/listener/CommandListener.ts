@@ -1,11 +1,11 @@
-import { FramecordCommand } from '../classes/FramecordCommand';
 import { Message } from 'discord.js';
+import { FramecordCommand } from '../classes/FramecordCommand';
 
 export class CommandListener {
 
     private commands: Array<FramecordCommand> = [];
     private prefix = '!';
-    public ignoreCase = true;
+    public  ignoreCase = true;
 
     public addCommand(command: FramecordCommand): void {
         this.commands.push(command);
@@ -23,7 +23,8 @@ export class CommandListener {
             command.triggers.forEach((trigger: string) => {
                 if(this.ignoreCase) { message.content = message.content.toLocaleLowerCase(); }
                 if(message.content.replace(this.prefix, '').startsWith(trigger) ) {
-                    command.callback(message); success = true;
+                    let args: Array<string> = message.content.replace(this.prefix, '').split(' '); args.shift();
+                    command.callback(message, args); success = true;
                 }
             });
         });
