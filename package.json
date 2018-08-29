@@ -1,14 +1,14 @@
 {
-  "name": "webpacktemplate",
+  "name": "framecord",
   "version": "1.0.0",
-  "description": "Description here",
+  "description": "",
   "main": "lib/bundle.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "build": "webpack",
-    "build-watch": "webpack --watch"
+    "build": "tsc",
+    "build-watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -21,11 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^10.9.2",
-    "ts-loader": "^4.5.0",
-    "typescript": "^3.0.1",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-livereload-plugin": "^2.1.1"
+    "typescript": "^3.0.1"
   },
   "dependencies": {
     "discord.js": "^11.4.2"
