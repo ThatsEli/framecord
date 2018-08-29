@@ -6,4 +6,6 @@ let fc = new framecord.FramecordInstance();
 
 fc.start(TOKEN);
 
-fc.addCommand( new framecord.FramecordCommand(['test1', 'test2'], (message, args) => { console.log(message.content, args); }) );
+fc.addCommand( new framecord.FramecordCommand(['test1', 'test2'], (message, args, databucket) => {
+    console.log(message.content, args, databucket);
+}) );

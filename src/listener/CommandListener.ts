@@ -24,7 +24,7 @@ export class CommandListener {
                 if(this.ignoreCase) { message.content = message.content.toLocaleLowerCase(); }
                 if(message.content.replace(this.prefix, '').startsWith(trigger) ) {
                     let args: Array<string> = message.content.replace(this.prefix, '').split(' '); args.shift();
-                    command.callback(message, args); success = true;
+                    command.callback(message, args, command.dataBucket); success = true;
                 }
             });
         });
