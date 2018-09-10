@@ -10,4 +10,4 @@ fc.addCommand( new framecord.FramecordCommand(['test1', 'test2'], (message, args
     console.log(message.content, args, databucket);
 }));
 
-fc.addFilter( new framecord.FramecordSimpleFilter(/php4life/gi));
+fc.addFilter( new framecord.FramecordFilter(/php4life/gi));

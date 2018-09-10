@@ -1,11 +1,11 @@
 import { FramecordCommand } from './classes/FramecordCommand';
 import { FramecordInstance } from './classes/FramecordInstance';
-import { FramecordSimpleFilter } from './classes/FramecordSimpleFilter';
+import { SimpleFilter } from './classes/FramecordFilter';
 
 const toExport = {
     FramecordInstance: FramecordInstance,
     FramecordCommand: FramecordCommand,
-    FramecordSimpleFilter: FramecordSimpleFilter
+    FramecordFilter: SimpleFilter
 }
 
 export = toExport;

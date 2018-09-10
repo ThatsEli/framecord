@@ -1,5 +1,5 @@
 
-export class FramecordSimpleFilter {
+export class SimpleFilter {
 
     public trigger: RegExp;
 

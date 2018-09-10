@@ -3,14 +3,15 @@ import { CommandListener } from '../listener/CommandListener';
 import { SimpleFilterListener } from '../listener/SimpleFilterListener';
 import { DataBucket } from "./Bucket";
 import { FramecordCommand } from './FramecordCommand';
-import { FramecordSimpleFilter } from './FramecordSimpleFilter';
+import { SimpleFilter } from './FramecordFilter';
 
 export class FramecordInstance {
 
     private discordJS: Client = new Client();
     private CommandListener = new CommandListener();
-    private SimpleFilterListener = new SimpleFilterListener();
-    private _globalBucket = new DataBucket();
+    private FilterListener = new SimpleFilterListener();
+
+    public globalBucket = new DataBucket();
 
     constructor() {}
 
@@ -18,20 +19,16 @@ export class FramecordInstance {
         this.discordJS.login(token);
         this.discordJS.on('message', (message: Message): void => {
             this.CommandListener.checkMessage(message);
-            this.SimpleFilterListener.checkMessage(message);
+            this.FilterListener.checkMessage(message);
         })
-    }
-
-    public globalBucket(callback: (bucket: DataBucket) => DataBucket): void {
-        this._globalBucket = callback(this._globalBucket);
     }
 
     public addCommand(command: FramecordCommand): void {
         this.CommandListener.addCommand(command);
     }
 
-    public addFilter(filter: FramecordSimpleFilter): void {
-        this.SimpleFilterListener.addFilter(filter);
+    public addFilter(filter: SimpleFilter): void {
+        this.FilterListener.addFilter(filter);
     }
 
 }

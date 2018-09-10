@@ -1,11 +1,11 @@
 import { Message } from "discord.js";
-import { FramecordSimpleFilter } from '../classes/FramecordSimpleFilter';
+import { SimpleFilter } from '../classes/FramecordFilter';
 
 export class SimpleFilterListener {
 
-    private filters: Array<FramecordSimpleFilter> = [];
+    private filters: Array<SimpleFilter> = [];
 
-    public addFilter(filter: FramecordSimpleFilter): void {
+    public addFilter(filter: SimpleFilter): void {
         this.filters.push(filter);
     }
 
