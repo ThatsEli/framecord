@@ -1,15 +1,18 @@
 import { Client, Message } from "discord.js";
 import { CommandListener } from '../listener/CommandListener';
-import { SimpleFilterListener } from '../listener/SimpleFilterListener';
+import { CustomFilterListener } from "../listener/CustomFilterListener";
+import { FilterListener } from '../listener/FilterListener';
 import { DataBucket } from "./Bucket";
 import { FramecordCommand } from './FramecordCommand';
+import { CustomFilter } from './FramecordCustomFilter';
 import { SimpleFilter } from './FramecordFilter';
 
 export class FramecordInstance {
 
     private discordJS: Client = new Client();
     private CommandListener = new CommandListener();
-    private FilterListener = new SimpleFilterListener();
+    private FilterListener = new FilterListener();
+    private CustomFilterListener = new CustomFilterListener();
 
     public globalBucket = new DataBucket();
 
@@ -20,6 +23,7 @@ export class FramecordInstance {
         this.discordJS.on('message', (message: Message): void => {
             this.CommandListener.checkMessage(message);
             this.FilterListener.checkMessage(message);
+            this.CustomFilterListener.checkMessage(message);
         })
     }
 
@@ -29,6 +33,10 @@ export class FramecordInstance {
 
     public addFilter(filter: SimpleFilter): void {
         this.FilterListener.addFilter(filter);
+    }
+
+    public addCustomFilter(filter: CustomFilter): void {
+        this.CustomFilterListener.addFilter(filter);
     }
 
 }

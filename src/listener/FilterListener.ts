@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
 import { SimpleFilter } from '../classes/FramecordFilter';
 
-export class SimpleFilterListener {
+export class FilterListener {
 
     private filters: Array<SimpleFilter> = [];
 
