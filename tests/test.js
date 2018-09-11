@@ -12,4 +12,4 @@ fc.addCommand( new framecord.FramecordCommand(['test1', 'test2'], (message, args
 
 fc.addFilter( new framecord.SimpleFilter(/php4life/gi));
 
-fc.addCustomFilter( new framecord.CustomFilter(/TSIsShit/gi, (message) => { message.reply('test123'); } ) );
+fc.addCustomFilter( new framecord.CustomFilter(/TSIsShit/gi, (message) => { console.log(fc.getUserBucket(message.author).test); fc.getUserBucket(message.author).test = '123'; } ) );

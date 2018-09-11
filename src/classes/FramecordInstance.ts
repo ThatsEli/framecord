@@ -1,7 +1,8 @@
-import { Client, Message } from "discord.js";
+import { Client, Message, User } from "discord.js";
 import { CommandListener } from '../listener/CommandListener';
 import { CustomFilterListener } from "../listener/CustomFilterListener";
 import { FilterListener } from '../listener/FilterListener';
+import { UserBucketManager } from '../manager/UserBucketManager';
 import { DataBucket } from "./Bucket";
 import { FramecordCommand } from './FramecordCommand';
 import { CustomFilter } from './FramecordCustomFilter';
@@ -13,6 +14,7 @@ export class FramecordInstance {
     private CommandListener = new CommandListener();
     private FilterListener = new FilterListener();
     private CustomFilterListener = new CustomFilterListener();
+    private userBucketManager = new UserBucketManager();
 
     public globalBucket = new DataBucket();
 
@@ -25,6 +27,10 @@ export class FramecordInstance {
             this.FilterListener.checkMessage(message);
             this.CustomFilterListener.checkMessage(message);
         })
+    }
+
+    public getUserBucket(user: User): DataBucket {
+        return this.userBucketManager.getUserBucket(user);
     }
 
     public addCommand(command: FramecordCommand): void {
