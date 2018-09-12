@@ -29,6 +29,10 @@ export class FramecordInstance {
         })
     }
 
+    public subToEvent(event: string, callback: Function): void {
+        this.discordJS.on(event, callback);
+    }
+
     public getUserBucket(user: User): DataBucket {
         return this.userBucketManager.getUserBucket(user);
     }
