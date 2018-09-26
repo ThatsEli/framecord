@@ -11,7 +11,8 @@ export class FilterListener {
 
     public checkMessage(message: Message): boolean {
         for (let i: number = 0; i < this.filters.length; i++) {
-            if(this.filters[i].trigger.test(message.content)) {
+            console.log(this.filters[i], message.content);
+            if(this.filters[i].trigger.test(message.content) || this.filters[i].trigger.test(message.content)) {
                 try {
                     message.delete();    
                 } catch (error) {

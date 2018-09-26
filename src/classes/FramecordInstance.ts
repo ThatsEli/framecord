@@ -10,13 +10,13 @@ import { SimpleFilter } from './FramecordFilter';
 
 export class FramecordInstance {
 
-    private discordJS: Client = new Client();
     private CommandListener = new CommandListener();
     private FilterListener = new FilterListener();
     private CustomFilterListener = new CustomFilterListener();
     private userBucketManager = new UserBucketManager();
 
     public globalBucket = new DataBucket();
+    public discordJS: Client = new Client();
 
     constructor() {}
 
@@ -48,5 +48,4 @@ export class FramecordInstance {
     public addCustomFilter(filter: CustomFilter): void {
         this.CustomFilterListener.addFilter(filter);
     }
-
 }
