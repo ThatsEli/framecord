@@ -10,6 +10,8 @@ fc.addCommand( new framecord.FramecordCommand(['test1', 'test2'], (message, args
     console.log(message.content, args, databucket);
 }));
 
-fc.addFilter( new framecord.SimpleFilter(/php4life/gi));
+// fc.addFilter( new framecord.SimpleFilter(/php4life/gi));
 
-fc.addCustomFilter( new framecord.CustomFilter(/TSIsShit/gi, (message) => { console.log(fc.getUserBucket(message.author).test); fc.getUserBucket(message.author).test = '123'; } ) );
+// fc.addCustomFilter( new framecord.CustomFilter(/TSIsShit/gi, (message) => { console.log(fc.getUserBucket(message.author).test); fc.getUserBucket(message.author).test = '123'; } ) );
+
+fc.addEmojiFilter(new framecord.FramecordReactionRole([{reaction: '🍆', role: 'Test'}])  )
