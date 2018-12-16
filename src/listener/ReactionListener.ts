@@ -5,7 +5,7 @@ export class ReactionListener {
 
     private reactionRoles: Array<FramecordReactionRole> = [];
 
-    public checkReaction(message: Message, reaction: MessageReaction, user: User) {
+    public checkReaction(message: Message, reaction: MessageReaction) {
         for (let i = 0; i < this.reactionRoles.length; i++) {
             const framecordReactionRole = this.reactionRoles[i];
             for (let j = 0; j < framecordReactionRole.reactionRoles.length; j++) {

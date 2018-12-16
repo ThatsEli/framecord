@@ -30,8 +30,8 @@ export class FramecordInstance {
             this.FilterListener.checkMessage(message);
             this.CustomFilterListener.checkMessage(message);
         });
-        this.discordJS.on('messageReactionAdd', (messageReaction: MessageReaction, user: User) => {
-            this.ReactionListener.checkReaction(messageReaction.message, messageReaction, user);
+        this.discordJS.on('messageReactionAdd', (messageReaction: MessageReaction) => {
+            this.ReactionListener.checkReaction(messageReaction.message, messageReaction);
         });
     }
 
