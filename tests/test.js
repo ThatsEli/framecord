@@ -6,6 +6,8 @@ let fc = new framecord.FramecordInstance();
 
 fc.start(TOKEN);
 
+fc.cacheMessage('347131587202121748', '523891110402195456');
+
 fc.addCommand( new framecord.FramecordCommand(['test1', 'test2'], (message, args, databucket) => {
     console.log(message.content, args, databucket);
 }));

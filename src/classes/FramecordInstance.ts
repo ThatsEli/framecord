@@ -1,4 +1,4 @@
-import { Client, Message, User, MessageReaction } from "discord.js";
+import { Client, Message, User, MessageReaction, TextChannel } from "discord.js";
 import { CommandListener } from '../listener/CommandListener';
 import { CustomFilterListener } from "../listener/CustomFilterListener";
 import { FilterListener } from '../listener/FilterListener';
@@ -58,4 +58,12 @@ export class FramecordInstance {
     public addCustomFilter(filter: CustomFilter): void {
         this.CustomFilterListener.addFilter(filter);
     }
+
+    public cacheMessage(channelId: string, messageId: string): void {
+        setTimeout(() => {
+            let channel = <TextChannel>this.discordJS.channels.get(channelId);
+            channel.fetchMessage(messageId);
+        }, 1000);    
+    }
+
 }
