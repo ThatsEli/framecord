@@ -1,4 +1,3 @@
-
 export class FramecordReactionRole {
 
     public reactionRoles: Array<ReactionRole>;

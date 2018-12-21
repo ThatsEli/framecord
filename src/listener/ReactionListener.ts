@@ -1,5 +1,6 @@
 import { Message, MessageReaction, User } from 'discord.js';
 import { FramecordReactionRole } from '../classes/FramecordReactionRole';
+import { LogManager, ErrorType } from '../manager/LogManager';
 
 export class ReactionListener {
 
@@ -12,7 +13,7 @@ export class ReactionListener {
                 if(reaction.emoji.name === framecordReactionRole.reactionRoles[j].reaction) {
                     let role = message.guild.roles.find(role => role.name === framecordReactionRole.reactionRoles[j].role);
                     message.member.addRole(role);
-                    // console.log('User:', message.author.username, 'Role:', role.name);
+                    LogManager.log('User ' + message.member.displayName + ' got role ' + role.name, ErrorType.info);
                 }                    
             }
         }

@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { FramecordCommand } from '../classes/FramecordCommand';
+import { LogManager, ErrorType } from '../manager/LogManager';
 
 export class CommandListener {
 
@@ -25,6 +26,7 @@ export class CommandListener {
                 if(message.content.replace(this.prefix, '').startsWith(trigger) ) {
                     let args: Array<string> = message.content.replace(this.prefix, '').split(' '); args.shift();
                     command.callback(message, args, command.dataBucket); success = true;
+                    LogManager.log('Responded to command!', ErrorType.info);
                 }
             });
         });
